@@ -7,11 +7,11 @@
 {% endblock %}
 
 {% block body %}
-    {{ include('_includes/breadcrumb.html.twig', {
+    {#{ include('_includes/breadcrumb.html.twig', {
         'path': [
             {'#': 'Login'|trans}
         ]
-    }) }}
+    }) }#}
 
     <div class="container">
         <div class="row">
@@ -52,7 +52,7 @@
                         </div>
 
                         <div>
-                            <button data-spinner="" type="submit" id="form_customer_login_submit" class="btn-form-action login-btn mt-4" tabIndex="3">{% trans %}Enter{% endtrans %}</button>
+                            <button data-spinner="" type="submit" id="form_customer_login_submit" class="btn-form-action login-btn background-color-purple mt-4" tabIndex="3">{% trans %}Enter{% endtrans %}</button>
                         </div>
                     </form>
 
@@ -60,7 +60,7 @@
 
                     <h1>{% trans %}New Customer{% endtrans %}</h1>
                     <p>{% trans %}Creating an account has many benefits faster checkout, keeping more than one address, tracking orders, and more.{% endtrans %}</p>
-                    <a href="{{ baseUri }}/customer/signup" class="register-secondary-btn">{% trans %}Create an account{% endtrans %}</a>
+                    <a href="{{ baseUri }}/customer/signup" class="register-secondary-btn background-color-orange">{% trans %}Create an account{% endtrans %}</a>
                 </div>
             </div>
         </div>

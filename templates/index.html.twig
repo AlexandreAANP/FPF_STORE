@@ -28,7 +28,7 @@
             {% endif %}
         </div>
 
-        <div class="container">
+        <div class="container pb-5 mb-5">
             <div class="row">
                 {% if colProductHighlighted['physical-products'] is defined and colProductHighlighted['physical-products']|length > 0 %}
                     <div class="col-12 positive-z-index">
@@ -48,25 +48,53 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
-                {% if colProductCategoryHighlighted is defined and colProductCategoryHighlighted|length > 0 %}
-                    {% for productCategoryHighlighted in colProductCategoryHighlighted %}
+                <div class="col-12 col-lg-6 pb-2 d-flex justify-content-center align-items-center">
+                    <div class="text-campanha text-center">
                         <div>
-                            <a href="{{ baseUri }}/product?category={{ productCategoryHighlighted.referenceKey }}">
-                                <div class="m-2" data-name="{{ productCategoryHighlighted.name|url_encode }}" style="width: 200px; height: 200px; background-image: url('{{ productCategoryHighlighted.image }}'); background-size: cover; background-repeat: no-repeat; ">
-                                    <div class="title_activity_s">
-                                    <span>
-                                        {{ productCategoryHighlighted.name }}
-                                    </span>
-                                    </div>
-                                </div>
-                            </a>
+                        <span class="title-campanha">{% trans %}Exclusive Offer{% endtrans %}</span>
                         </div>
-                    {% endfor %}
+                        <div>
+                        <a class="btn btn-campanha">{% trans %}Know more{% endtrans %}</a>
+                        </div>
+                    </div>
+                     <img width="100%" src="/assets/images/home-campanha-1.svg">
+                </div>
+                <div class="col-12 col-lg-6 pb-2 d-flex justify-content-center align-items-center">
+                      <div class="text-campanha text-center">
+                        <div>
+                        <span class="title-campanha">{% trans %}Campaign{% endtrans %}</span>
+                        </div>
+                        <div>
+                        <a class="btn btn-campanha">{% trans %}Know more{% endtrans %}</a>
+                        </div>
+                    </div>
+                    <img width="100%" src="/assets/images/home-campanha-2.svg">
+                </div>
+            </div>
+        </div>
+
+         <div class="container pb-5 mb-5">
+            <div class="row">
+                {% if colProductHighlighted['physical-products'] is defined and colProductHighlighted['physical-products']|length > 0 %}
+                    <div class="col-12 positive-z-index">
+                        <div class="products-slider-top">
+                            <h1>{% trans %}Related{% endtrans %}</h1>
+                        </div>
+                        <div class="products-slider">
+                            {% for product in colProductHighlighted['physical-products'] %}
+                                {{ include('_render_block/product-card-rounded.html.twig', {
+                                    'baseUri': baseUri,
+                                    'product': product,
+                                }) }}
+                            {% endfor %}
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>
+
     </section>
 {% endblock %}
 

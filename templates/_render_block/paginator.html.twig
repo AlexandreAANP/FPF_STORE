@@ -12,15 +12,14 @@
 
 {% if (arPagination.currentPage is defined) and (arPagination.currentPage > 0) %}
     <nav id="pagination_default">
-
     {% set path = baseUri~'\/product\/'%}
     {% set path = productType ? path ~ productType~'\/' : path %}
     {% set category = (app.request.get('category') ?? null) ? '?category='~app.request.get('category') : null %}
 
         <ul class="pagination">
-            {% if (arPagination.currentPage is defined) and (arPagination.currentPage > 1) %}
+            {#% if (arPagination.currentPage is defined) and (arPagination.currentPage > 1) %}
                 <li class="page-item"><a href="{{path ~ '1'~ category}}" class="page-link"><i class='fas fa-angle-double-left'></i></a></li>
-            {% endif %}
+            {% endif %#}
 
             {% if (arPagination.currentPage is defined) and (arPagination.currentPage > 1) %}
                 <li class="page-item"><a href="{{path ~ (arPagination.currentPage - 1) ~ category}}" class="page-link"><i class='fas fa-angle-left'></i></a></li>

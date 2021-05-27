@@ -93,4 +93,105 @@
 		height: 32px;
 	}
 }
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+:root{
+	--yellow: #ffc31f;
+	--orange: #fb5223 ;
+	--purple:  #8019b3;
+	--blue: #1985a1;
+	--green: #8ac926;
+}
+
+.color-yellow{
+	color: var(--yellow) !important;
+}
+.background-color-yellow{
+	background-color: var(--yellow) !important;
+}
+.background-color-orange{
+	background-color: var(--orange) !important;
+}
+.border-color-orange{
+	border: 1px solid var(--orange) !important;
+}
+.color-orange{
+	color: var(--orange) !important;
+}
+.border-color-yellow{
+	border: 1px solid var(--yellow) !important;
+}
+.color-yellow{
+	color: var(--yellow) !important;
+}
+.color-purple{
+	color: var(--purple) !important;
+}
+.icon-search-menu{
+	position: absolute;
+    display: flex;
+    transform: translate(-80%,-50%);
+    top: 50%;
+    right: 0;
+}
+body{
+	background-size: 100vw;
+    background-image: url(/assets/images/body-bg.svg);
+    background-position: center;
+    background-position-y: 40px;
+}
+.products-slider-container-controls>div:first-child{
+	border-radius: 0 !important;
+	border-color: var(--yellow) !important;
+}
+.products-slider-container-controls>div:last-child{
+	border-radius: 0 !important;
+	border-color: var(--purple) !important;
+	background-color: var(--purple) !important;
+}
+.products-slider-container-controls>div:first-child .mdi{
+	color: var(--yellow);
+}
+.products-card.raise .products-card-overflowed{
+	box-shadow: 0 2px 13px 0 rgb(0 0 0 / 18%);
+    bottom: -36px;
+    height: 36px;
+}
+.text-campanha{
+	position: absolute;
+}
+.text-campanha .title-campanha{
+	font-family: 'Roboto';
+    color: white;
+    font-weight: bold;
+    font-size: 29px;
+}
+.text-campanha .btn-campanha{
+	color: white;
+    border: 2px solid white;
+    border-radius: 21px;
+    text-align: center;
+}
+.products-card-rounded [class*="image"] {
+	border-radius: 0 !important;
+}
+.products-card-rounded [class*="overflowed"] {
+	border-radius: 0 !important;
+}
+
+.login-box{
+	background-color: #FFECB9;
+    border: 1px solid #E3E5EE;
+    padding: 50px 20px;
+    margin-bottom: 70px;
+    border-radius: 0 !important;
+}
+.background-color-purple{
+	background-color: var(--purple) !important;
+}
+.products-headers-options.w-btn-group .btn.active .mdi {
+	color: #cccccc !important;
+}
+.products-headers-options.w-btn-group .btn.active{
+	background-color: white !important;
+}

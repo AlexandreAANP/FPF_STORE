@@ -7,11 +7,11 @@
 {% endblock %}
 
 {% block body %}
-    {{ include('_includes/breadcrumb.html.twig', {
+    {#{ include('_includes/breadcrumb.html.twig', {
         'path': [
             {'#': 'Register'|trans}
         ]
-    }) }}
+    }) }#}
 
     <div class="container">
         <div class="row">
@@ -43,7 +43,11 @@
                             <label for="email">{% trans %}Email{% endtrans %}:</label>
                             <input type="text" name="email" id="email" class="form-control" required tabIndex="3">
                         </div>
-
+                          <div class="justify-content-center">
+                        <center>
+                            <input type='checkbox'><span> Receber a Newsletter</span>
+                        </center>
+                        </div>
                         <h2 class="my-4">{% trans %}Access Information{% endtrans %}</h2>
                         <div class="required-input w-100">
                             <label for="password">{% trans %}Password{% endtrans %}:</label>
@@ -54,27 +58,27 @@
                             <input type="password" name="password_confirm" id="password_confirm" class="form-control" required tabIndex="5">
                         </div>
 
-                        <!-- reCAPTCHA -->
+                        <!-- reCAPTCHA 
                         <div class="d-block w-100 text-center">
                             <div class="d-inline-block">
                                 <div id="recaptcha_html_element"></div>
                             </div>
                         </div>
-                        <!-- /reCAPTCHA -->
+                            /reCAPTCHA -->
 
                         <div>
-                            <button data-spinner="" type="submit" id="form_customer_signup_submit" class="login-btn mt-4" tabIndex="6">
+                            <button data-spinner="" type="submit" id="form_customer_signup_submit" class="login-btn mt-4 background-color-yellow" tabIndex="6">
                                 {% trans %}Create an account{% endtrans %}
                             </button>
                         </div>
                     </form>
-
+                    {#
                     <hr>
 
                     <h1>{% trans %}I already have an Account!{% endtrans %}</h1>
                     <a href="{{ baseUri }}/customer/login" class="register-secondary-btn" tabIndex="7">
                         {% trans %}Go to Login{% endtrans %}
-                    </a>
+                    </a>#}
                 </div>
             </div>
         </div>

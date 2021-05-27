@@ -869,6 +869,7 @@ class ProductController extends SiteCacheController
             $arListProductItemStock = [];
             foreach ($arProductItemStock AS $itemStockId) {
                 $arListProductItemStock[$line]['productItemStockId'] = $itemStockId;
+                /*dd($arProductById);*/
                 foreach ($arProductById AS $product) {
                     if (array_key_exists('colItems', $product)) {
                         foreach ($product['colItems'] AS $item) {

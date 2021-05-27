@@ -4,10 +4,10 @@
 <li><a href="#" title="Loja">Loja</a></li>
 <li><a href="#" title="Parceiros">Parceiros</a></li>
 #}
-<li><a href="{{ baseUri }}/" title="{% trans %}Home{% endtrans %}">{% trans %}Home{% endtrans %}</a></li>
+
 <li class="nav-item dropdown">
     <a class="dropdown-toggle btn-sm" href="#" id="dropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
-        {% trans %}Content{% endtrans %}
+        {% trans %}Collections{% endtrans %}
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <li><a href="{{ baseUri }}/articles" data-loading-text="{% trans %}Articles{% endtrans %}" class="{% if controllerNameMenu == 'ContentArticles'%}active {% endif %}dropdown-item" style="cursor: pointer">{% trans %}Articles{% endtrans %}</a></li>
@@ -58,11 +58,12 @@
         <li><a href="{{ baseUri }}/terms" data-loading-text="{% trans %}Terms{% endtrans %}" class="{% if controllerNameMenu == 'ContentTerms'%}active {% endif %}dropdown-item" style="cursor: pointer">{% trans %}Terms{% endtrans %}</a></li>
     </ul>
 </li>
-<li><a href="{{ baseUri }}/about-us" title="{% trans %}About us{% endtrans %}">{% trans %}About us{% endtrans %}</a></li>
-<li><a href="{{ baseUri }}/product" title="{% trans %}Products{% endtrans %}">{% trans %}Products{% endtrans %}</a></li>
-<li><a href="{{ baseUri }}/contact" title="{% trans %}Contact{% endtrans %}">{% trans %}Contact{% endtrans %}</a></li>
+<li><a href="{{ baseUri }}/" title="{% trans %}Home{% endtrans %}">{% trans %}Home{% endtrans %}</a></li>
+<li><a href="{{ baseUri }}/about-us" title="{% trans %}About us{% endtrans %}">{% trans %}Experiences{% endtrans %}</a></li>
+<li><a href="{{ baseUri }}/product" title="{% trans %}Products{% endtrans %}">{% trans %}Hosting{% endtrans %}</a></li>
+<li><a href="{{ baseUri }}/contact" title="{% trans %}Contact{% endtrans %}">{% trans %}Contacts{% endtrans %}</a></li>
 
-{% if customerId is defined and customerId > 0 %}
+{#% if customerId is defined and customerId > 0 %}
     <li class="px-2">
         <a href="{{ baseUri }}/customer" class="btn btn-secondary text-white">{% trans %}Customer Area{% endtrans %}</a>
     </li>
@@ -73,4 +74,4 @@
             <a href="{{ baseUri }}/signup" class="btn btn-primary">{% trans %}Register{% endtrans %}</a>
         </div>
     </li>
-{% endif %}
+{% endif %#}

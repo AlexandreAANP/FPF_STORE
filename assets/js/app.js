@@ -13,6 +13,7 @@ $(function() {
             slideBy: 'page',
             controls: false,
             navPosition: 'bottom',
+            nav: false
         });
     }
 

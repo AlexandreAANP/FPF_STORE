@@ -27,7 +27,7 @@
                     {% endif %}
                 </div>
                 <div class="col-12 col-md-8 col-xl-9">
-                    {% if colProductType is defined %}
+                    {#% if colProductType is defined %}
                         <div class="d-block w-100 text-right mb-2 pr-2">
                             {% for productType in colProductType %}
                                 <a href="{{ baseUri }}/product/{{ productType.referenceKey }}" class="btn btn-outline-secondary">
@@ -35,7 +35,7 @@
                                 </a>
                             {% endfor %}
                         </div>
-                    {% endif %}
+                    {% endif %#}
 
                     {% include '_render_block/simple-slider.html.twig' %}
 
