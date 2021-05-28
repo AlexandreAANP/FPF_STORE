@@ -195,3 +195,6 @@ body{
 .products-headers-options.w-btn-group .btn.active{
 	background-color: white !important;
 }
+.color-blue{
+	color: var(--blue) !important; 
+}

@@ -54,7 +54,7 @@
                     {% endfor %}
 
                     <ul class="list-group">
-                        <li class="list-group-item header">{% trans %}Order Summary{% endtrans %}</li>
+                        <li class="list-group-item header rounded-0 background-color-purple">{% trans %}Order Summary{% endtrans %}</li>
 
                         {% set priceWithoutTax = 0 %}
                         {% set priceTax = 0 %}
@@ -87,7 +87,7 @@
                             <span><span id="order_delivery_price">0</span> {{ LayoutFunctions.getCurrencySymbol() }}</span>
                         </li>
 
-                        <li class="list-group-item footer">
+                        <li class="list-group-item footer rounded-0">
                             {% trans %}Order Total{% endtrans %}
                             <span id="total_price"><span data-total="{{ product.totalPrice }}">{{ product.totalPrice }}</span> {{ LayoutFunctions.getCurrencySymbol() }}</span>
                             {# <span id='total_points' style="display:none;"></span> #}

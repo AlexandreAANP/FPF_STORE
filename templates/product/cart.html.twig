@@ -164,14 +164,14 @@
                         {% if isAllowedQuantity %}
                             <a href="#" data-loading-text="{% trans %}Updating{% endtrans %}" class="clean-btn btn-cart-products-quantity-update">{% trans %}Update Stock{% endtrans %}</a>
                         {% endif %}
-                        <a data-spinner="" href="{{ baseUri }}/product" class="clean-btn">{% trans %}Keep buying{% endtrans %}</a>
-                        <a data-spinner="" href="{{ baseUri }}/checkout" class="btn-form-go-to-checkout secondary-btn">{% trans %}Checkout{% endtrans %}</a>
+                        <a data-spinner="" href="{{ baseUri }}/product" class="clean-btn color-orange">{% trans %}Keep buying{% endtrans %}</a>
+                        <a data-spinner="" href="{{ baseUri }}/checkout" class="btn-form-go-to-checkout secondary-btn background-color-purple">{% trans %}Checkout{% endtrans %}</a>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-4">
                 <ul class="list-group">
-                    <li class="list-group-item header">{% trans %}Order Summary{% endtrans %}</li>
+                    <li class="list-group-item header background-color-purple rounded-0">{% trans %}Order Summary{% endtrans %}</li>
 
                     {% set priceWithoutTax = 0 %}
                     {% set priceTax = 0 %}
@@ -206,7 +206,7 @@
                     </li>
                     #}
 
-                    <li class="list-group-item footer">
+                    <li class="list-group-item footer rounded-0">
                         {% trans %}Order Total{% endtrans %}
                         <span>{{ product.totalPrice }} {{ LayoutFunctions.getCurrencySymbol() }}</span>
                     </li>

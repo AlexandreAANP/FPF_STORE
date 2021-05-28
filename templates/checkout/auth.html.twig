@@ -15,7 +15,7 @@
     }) }}
 
     <div class="container">
-        <div class="row">
+        <div class="row d-flex align-items-center">
             <div class="col-lg-5">
                 <section class="login-box">
                     <h1>{% trans %}I'm already a customer{% endtrans %}</h1>
@@ -45,14 +45,14 @@
 
                         <div class="d-flex justify-content-center">
                             <div>
-                                <button data-spinner="" type="submit" id="form_checkout_login_submit" class="btn-form-action login-btn mt-4">{% trans %}Access account{% endtrans %}</button>
+                                <button data-spinner="" type="submit" id="form_checkout_login_submit" class="btn-form-action login-btn mt-4 background-color-purple">{% trans %}Access account{% endtrans %}</button>
                             </div>
                         </div>
                     </form>
                 </section>
             </div>
 
-            <div class="col-lg-2 text-center">
+            <div class="col-lg-2 text-center pb-5 pb-lg-0">
                 <span class="display-4 font-weight-bold">{% trans %}or{% endtrans %}</span>
             </div>
 
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <button data-spinner="" type="submit" id="form_checkout_signup_submit" class="login-btn mt-4">
+                            <button data-spinner="" type="submit" id="form_checkout_signup_submit" class="login-btn mt-4 background-color-orange">
                                 {% trans %}Create an account{% endtrans %}
                             </button>
                         </div>

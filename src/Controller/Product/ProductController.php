@@ -888,20 +888,20 @@ class ProductController extends SiteCacheController
                                 $arListProductItemStock[$line]['quantity'] = $arProductQuantity[$itemStockId];
                                 $arListProductItemStock[$line]['allowQuantity'] = $product['allowQuantity'];
                                 $arListProductItemStock[$line]['maxQuantity'] = $product['maxQuantity'];
-                                $arListProductItemStock[$line]['isFullPointsPayment'] = $product['isFullPointsPayment'];
-                                $arListProductItemStock[$line]['pointsPercentage'] = $product['pointsPercentage'];
+                                $arListProductItemStock[$line]['isFullPointsPayment'] = $product['isFullPointsPayment'] ?? null;
+                                $arListProductItemStock[$line]['pointsPercentage'] = $product['pointsPercentage'] ?? null;
 
-                                $arListProductItemStock[$line]['pointsFullPayment'] = $item['pointsFullPayment'];
-                                $totalPoints += $item['pointsFullPayment'] * $arProductQuantity[$itemStockId];
-                                $totalPointsByPointsPercentage += ($item['pointsFullPayment'] * $product['pointsPercentage']) * $arProductQuantity[$itemStockId];
-                                $priceByPointsPercentage = $item['price'] - ($item['price'] * $product['pointsPercentage']);
+                                $arListProductItemStock[$line]['pointsFullPayment'] = $item['pointsFullPayment'] ?? null;
+                                $totalPoints += $item['pointsFullPayment'] ?? null * $arProductQuantity[$itemStockId] ?? null;
+                                $totalPointsByPointsPercentage += 0; //$item['pointsFullPayment'] ?? null * $product['pointsPercentage'] ?? null * $arProductQuantity[$itemStockId] ?? null;
+                                $priceByPointsPercentage = $item['price'];// - ($item['price'] * $product['pointsPercentage']);
                                 $totalPriceByPointsPercentage += $priceByPointsPercentage * $arProductQuantity[$itemStockId];
 
                                 $arListProductItemStock[$line]['priceByPointsPercentage'] = $priceByPointsPercentage;
                                 
                                 $line++;
-
-                                if(!$product['isFullPointsPayment']) {
+                                
+                                if(!array_key_exists("isFullPointsPayment", $product) || !$product['isFullPointsPayment'] ) {
                                     $isFullPointsPayment = false;
                                 }
                             }
@@ -921,7 +921,7 @@ class ProductController extends SiteCacheController
             'totalPoints' => $totalPoints,
             'totalPriceByPointsPercentage' => $totalPriceByPointsPercentage,
             'totalPointsByPointsPercentage' => $totalPointsByPointsPercentage,
-            'isFullPointsPayment' => $isFullPointsPayment,
+            'isFullPointsPayment' => $isFullPointsPayment ?? null,
             'listProductItemStock' => $arListProductItemStock,
             'product' => $arProduct
         ];

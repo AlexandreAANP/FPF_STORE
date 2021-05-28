@@ -66,11 +66,11 @@
                 {% endfor %}
 
                 <div class="mb-4">
-                    <button data-show-fields class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseNewInvoice" aria-expanded="false" aria-controls="collapseNewInvoice">
+                    <button data-show-fields class="btn btn-secondary background-color-orange border-color-orange" type="button" data-toggle="collapse" data-target="#collapseNewInvoice" aria-expanded="false" aria-controls="collapseNewInvoice">
                         {% trans %}New Invoice{% endtrans %}
                     </button>
-                    <button data-next-step type="button" class="btn btn-outline-light text-dark rounded-pill btn-checkout-next float-right">
-                        {% trans %}Next{% endtrans %} <i class="mdi mdi-arrow-right-bold-circle-outline"></i>
+                    <button data-next-step type="button" class="btn btn-outline-light text-dark rounded-pill btn-checkout-next float-right color-yellow border-color-yellow">
+                        {% trans %}Next{% endtrans %} <i class="mdi mdi-arrow-right-bold-circle-outline color-yellow"></i>
                     </button>
                 </div>
             </div>
@@ -147,12 +147,12 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between pb-18">
-                        <button data-spinner="" type="submit" class="secondary-btn btn-new-customer-invoice">
+                        <button data-spinner="" type="submit" class="secondary-btn btn-new-customer-invoice background-color-purple">
                             {% trans %}Save{% endtrans %}
                         </button>
-                        <button data-next-step type="button" class="btn btn-outline-light text-dark rounded-pill btn-checkout-next">
+                        <button data-next-step type="button" class="btn btn-outline-light text-dark rounded-pill btn-checkout-next color-yellow border-color-yellow">
                             {% trans %}or{% endtrans %}
-                            {% trans %}Next{% endtrans %} <i class="mdi mdi-arrow-right-bold-circle-outline"></i>
+                            {% trans %}Next{% endtrans %} <i class="mdi mdi-arrow-right-bold-circle-outline color-yellow"></i>
                         </button>
                     </div>
                 </div>

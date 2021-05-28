@@ -85,12 +85,12 @@
 <div class="container mt-4 mb-5">
     <div class="row d-flex justify-content-between">
         <div class="col-6 col-lg-2 order-lg-1">
-            <img src="/assets/images/logo_fpf.svg">
+            <a href="{{ baseUri }}/"><img src="/assets/images/logo_fpf.svg"></a>
         </div>
 
         <div class="col-6 col-lg-3 order-lg-3 mb-1 mb-lg-0">
         {% if customerId is defined and customerId > 0 %}
-                <a href="{{ baseUri }}/customer" class="btn btn-secondary text-white">{% trans %}Customer Area{% endtrans %}</a>
+                <a href="{{ baseUri }}/customer" class="btn btn-secondary text-white background-color-orange border-color-orange">{% trans %}Customer Area{% endtrans %}</a>
         {% else %}
                 <a href="{{ baseUri }}/signup" class="btn font-weight-bold border-color-yellow color-yellow rounded-0 float-right bg-white">{% trans %}Register{% endtrans %}</a>
                 <a href="{{ baseUri }}/login" class="btn font-weight-bold rounded-0 text-white border-color-orange background-color-orange float-right">{% trans %}Login{% endtrans %}</a>

@@ -17,24 +17,40 @@
     {% set category = (app.request.get('category') ?? null) ? '?category='~app.request.get('category') : null %}
 
         <ul class="pagination">
-            {#% if (arPagination.currentPage is defined) and (arPagination.currentPage > 1) %}
+            {% if (arPagination.currentPage is defined) and (arPagination.currentPage > 1) %}
                 <li class="page-item"><a href="{{path ~ '1'~ category}}" class="page-link"><i class='fas fa-angle-double-left'></i></a></li>
-            {% endif %#}
+            {% endif %}
 
             {% if (arPagination.currentPage is defined) and (arPagination.currentPage > 1) %}
                 <li class="page-item"><a href="{{path ~ (arPagination.currentPage - 1) ~ category}}" class="page-link"><i class='fas fa-angle-left'></i></a></li>
             {% endif %}
 
+
+            {% set limitItems = 0 %}
             {% for key in 1..arPagination.pages %}
-                {% if key == arPagination.currentPage %}
-                    {% set current = 'active' %}
-                    <li class="page-item">
-                        <a href="{{path ~ key ~ category}}" class="{{ current }} page-link">
-                            {% if (arPagination.currentPage is defined) and (arPagination.currentPage > 0) %} {{ key }} {% else %} 1 {% endif %} {% trans %}of{% endtrans %} {{ arPagination.pages }}
-                        </a>
-                    </li>
+
+                
+                {% if limitItems < 5 %}
+                    {% if key != arPagination.currentPage %}
+                         <li class="page-item">
+                            <a href="{{path ~ key ~ category}}" class="page-link">
+                               {{key}}
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if key == arPagination.currentPage %}
+                        {% set current = 'active' %}
+                        <li class="page-item">
+                            <a href="{{path ~ key ~ category}}" class="{{ current }} background-color-yellow text-white page-link">
+                                {% if (arPagination.currentPage is defined) and (arPagination.currentPage > 0) %} {{ key }} {% else %} 1 {% endif %}
+                            </a>
+                        </li>
+                    {% endif %}
                 {% endif %}
+
+                {% set limitItems = limitItems + 1 %}
             {% endfor %}
+
 
             <li class="page-item">
                 {% if (arPagination.currentPage is defined) and (arPagination.currentPage < arPagination.pages) %}

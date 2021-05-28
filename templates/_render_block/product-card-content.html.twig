@@ -1,16 +1,16 @@
 <!--div class="products-tag green-tag">{% trans %}New{% endtrans %}</div-->
 <div class="products-card-wrapper">
-    <!--
+    
     <div class="products-card-share">
-        <a href="#"><i class="mdi mdi-compare-horizontal"></i></a>
-        <a href="#"><i class="mdi mdi-heart-outline"></i></a>
+        <a href="#"><i class="mdi mdi-compare-horizontal color-blue"></i></a>
+        <a href="#"><i class="mdi mdi-heart-outline color-blue"></i></a>
     </div>
-    -->
+    
     <a href="{{ baseUri }}/{{ product.referenceKey }}"><div class="products-card-image" style="background-image: url('{{ product.filename }}')"></div></a>
-    <a href="#" class="products-card-name">{{ product.name }}</a>
+    <a href="#" class="products-card-name color-blue">{{ product.name }}</a>
     <div class="products-card-values">
         <!--<span class="products-card-values-replaced">{{ product.price }} {{ LayoutFunctions.getCurrencySymbol() }}</span>-->
-        <span class="products-card-values-original">{{ product.price }} {{ LayoutFunctions.getCurrencySymbol() }}</span>
+        <span class="products-card-values-original color-blue">{{ product.price }} {{ LayoutFunctions.getCurrencySymbol() }}</span>
     </div>
 </div>
 
