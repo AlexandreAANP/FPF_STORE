@@ -39,7 +39,7 @@
 
     {% for nav in navs %}
         <a href="{{ baseUri ~ nav.href }}"
-           class="btn{% if app.request.pathInfo == baseUri ~ nav.href %} active{% endif %}">
+           class="btn bg-white{% if app.request.pathInfo == baseUri ~ nav.href %} active background-color-orange border-color-orange{% endif %}">
             <i class="{{ nav.icon }}"></i>
             {{ nav.title|trans }}
         </a>

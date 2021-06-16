@@ -396,11 +396,10 @@ class CheckoutController extends SiteCacheController
             'orderStatusReferenceKey' => $orderStatusReferenceKey,
             'domainName' => $_ENV['DOMAIN_NAME'],
             'language' => $defaultLanguage
-        ];
-
+        ]; 
+       
         if ($data = $this->setAPIData($this->apiUrl . '/api/addOrder', $arData)) {
             $objData = json_decode($data, JSON_UNESCAPED_UNICODE);
-
             if ($objData && array_key_exists('return', $objData) && $objData['return'] == 'success') {
                 if ($paymentMethod == 'none'){
                     $this->cartClear();
@@ -425,6 +424,7 @@ class CheckoutController extends SiteCacheController
      */
     public function checkoutNone(Request $request)
     {
+
         $paymentType = $request->request->get('payment_type');
   
         $customerId = $this->session->get('customerId');
@@ -441,7 +441,6 @@ class CheckoutController extends SiteCacheController
         $orderStatusReferenceKey = 'order-status-completed';
         $options = ['paymentType' => $paymentType];
         $orderInfoId = $this->addOrder($request, $customerAddressId, $customerInvoiceId, $paymentMethod, $deliveryMethodReferenceKey, $orderStatusReferenceKey, $options);
-
         if ($orderInfoId) {
             return $this->redirect('/checkout/none/complete/' . $orderInfoId);
         }

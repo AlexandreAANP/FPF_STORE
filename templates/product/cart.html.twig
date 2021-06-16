@@ -72,7 +72,7 @@
     <div class="container mb-5">
         <div class="row">
             <div class="col-12 col-lg-8">
-                <div class="cart-box">
+                <div class="cart-box bg-white">
                     {% set totalProductItems = 0 %}
                     {% set isAllowedQuantity = false %}
 
@@ -176,12 +176,13 @@
                     {% set priceWithoutTax = 0 %}
                     {% set priceTax = 0 %}
 
-                    {% for key, quantity in productQuantity %}
-                        {% set productDetail = LayoutFunctions.getAPI('getProductDetail?id=' ~ product.product[key] ~ '&language=' ~ app.request.getLocale()) %}
-                        {% set priceWithoutTax = priceWithoutTax + ((productDetail.price * quantity) / (1 + productDetail.productVat)) %}
-                        {% set priceTax = (product.totalPrice - priceWithoutTax) %}
-                    {% endfor %}
-
+                    {% if produtcQuantity is defined %}
+                        {% for key, quantity in productQuantity %}
+                            {% set productDetail = LayoutFunctions.getAPI('getProductDetail?id=' ~ product.product[key] ~ '&language=' ~ app.request.getLocale()) %}
+                            {% set priceWithoutTax = priceWithoutTax + ((productDetail.price * quantity) / (1 + productDetail.productVat)) %}
+                            {% set priceTax = (product.totalPrice - priceWithoutTax) %}
+                        {% endfor %}
+                    {% endif %}
                     <li class="list-group-item">
                         {% if totalProductItems == 1 %}
                             {% trans %}Item{% endtrans %}

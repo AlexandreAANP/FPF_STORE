@@ -27,7 +27,7 @@
                         {% trans %}Order Code{% endtrans %}: {{ orderInfoId }}
                     </p>
                     {% if (customerId is defined) and (customerId > 0) %}
-                        <a href="{{ baseUri }}/customer" class="sign_in secondary-btn continue-shopping">{% trans %}My Area{% endtrans %}</a>
+                        <a href="{{ baseUri }}/customer" class="sign_in secondary-btn continue-shopping background-color-purple">{% trans %}My Area{% endtrans %}</a>
                     {% else %}
                         <a href="#" id="btnLogin" class="sign_in join_now js-modal-show secondary-btn continue-shopping">{% trans %}Log In{% endtrans %}</a>
                     {% endif %}

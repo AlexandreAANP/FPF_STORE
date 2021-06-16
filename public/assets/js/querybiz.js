@@ -495,17 +495,18 @@ var querybiz = {
 			let size = arColItems[i].size;
 			let price = arColItems[i].price;
 			let image = arColItems[i].image;
+			let amount = arColItems[i].amount;
 
 			if (!querybiz.arProductItemsStockColor.hasOwnProperty(color)) {
 				querybiz.arProductItemsStockColorHex[color] = colorHex;
 				querybiz.arProductItemsStockColor[color] = [];
 			}
-			querybiz.arProductItemsStockColor[color].push({stockId: stockId, size: size});
+			querybiz.arProductItemsStockColor[color].push({stockId: stockId, size: size, amount: amount, price: price, image: image});
 
 			if (!querybiz.arProductItemsStockSize.hasOwnProperty(size)) {
 				querybiz.arProductItemsStockSize[size] = [];
 			}
-			querybiz.arProductItemsStockSize[size].push({stockId: stockId, color: color});
+			querybiz.arProductItemsStockSize[size].push({stockId: stockId, color: color, amount: amount, price: price, image: image});
 		}
 
 		let html = '<div>';
@@ -534,17 +535,18 @@ var querybiz = {
 							strDataStockId += ',';
 						}
 						strDataStockId += arColor[i].stockId;
+						img =  arColor[i].image
 					}
 					strDataStockId = '[' + strDataStockId + ']';
 
-					html += '<div data-color="' + key + '" class="modal-product-item-stock-color border card p-2 m-1" data-color-position="' + i + '" data-stock-id="' + strDataStockId + '" style="cursor: pointer; background-color: ' + bgcolor + '">';
-					html += '	<div class="d-block w-100 text-center">';
-					html += '		<div class="d-inline-block rounded-circle mr-2 border" style="width: 20px; height: 20px; background-color: ' + hex + '" title="' + key + '"></div>';
-					html += '	</div>';
-					html += '	<div class="d-block w-100 text-center">';
-					html += 		key;
-					html += '	</div>';
-					html += '</div>';
+					html +=
+					`<div data-color="` + key + `" class="modal-product-item-stock-color border card p-2 m-1 pointer"
+						data-color-position="` + i + `" data-stock-id="` + strDataStockId + `" style="cursor: pointer; background-color: ` + bgcolor + `" data-image="` + img + `">
+						<div class="d-block w-100 text-center">
+							<div class="d-inline-block rounded-circle mr-2 border w-h-20" style="background-color: ` + hex + `" title="` + key + `"></div>
+						</div>
+						<div class="d-block w-100 text-center">` +key +`</div>
+					</div>`;
 				}
 				html += '</div>';
 			}
@@ -557,6 +559,7 @@ var querybiz = {
 			if (objKey.length) {
 				html += '<div class="d-flex" id="modal_product_item_stock_size_list">';
 				for (let i = 0; i < objKey.length; i++) {
+
 					let key = objKey[i];
 					let arSize = querybiz.arProductItemsStockSize[key];
 
@@ -565,22 +568,40 @@ var querybiz = {
 					let textBold = 'normal';
 
 					let strDataStockId = '';
+					let amount = [];
+					let price = [];
 					for (let i = 0; i < arSize.length; i++) {
 						if (strDataStockId !== '') {
 							strDataStockId += ',';
 						}
 						strDataStockId += arSize[i].stockId;
+						amount.push(arSize[i].amount)
+						price.push(arSize[i].price)
+
 					}
 					strDataStockId = '[' + strDataStockId + ']';
 
-					html += '<div data-color="' + key + '" data-stock-id="' + strDataStockId + '" data-size-position="' + i + '" class="modal-product-item-stock-size border card p-2 px-3 m-1" style="cursor: default; background-color: ' + bgcolor + '; color: ' + textColor + '; font-weight: ' + textBold + '">' + key + '</div>';
+					html +=
+					`<div
+						data-color="` + key + `" data-stock-id="` + strDataStockId + `"
+						data-size-position="` + i + `"
+						data-amount="[`+amount.join(',')+`]"
+						data-price="[`+price.join(',')+`]"
+						class="modal-product-item-stock-size border card p-2 px-3 m-1"
+						style="cursor: default; background-color: ` + bgcolor + `; color: ` + textColor + `; font-weight: ` + textBold + `">
+						` + key +
+					`</div>`
+
 				}
+
 				html += '</div>';
+
 			}
 		}
 
 		return html;
 	},
+
 
 	listenerModalProductItemStock: function() {
 		let win = window.document; // let win = window.parent.document;
@@ -598,7 +619,7 @@ var querybiz = {
 			for (let j = 0; j < arSizeList.length; j++) {
 				$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('background', 'transparent');
 				$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('color', '#ccc');
-				$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('cursor', 'default');
+				$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('cursor', 'not-allowed');
 				$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('font-weight', 'normal');
 			}
 
@@ -613,32 +634,72 @@ var querybiz = {
 
 							firstSelected = true;
 							querybiz.lastModalProductItemStockSizePosition = j;
+							querybiz.productShowAvailabilityAndPrices($('.modal-product-item-stock-size[data-size-position="' + j + '"]', win));
 						}
 						$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('color', '#000');
 						$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('font-weight', 'bold');
 						$('.modal-product-item-stock-size[data-size-position="' + j + '"]', win).css('cursor', 'pointer');
+
 					}
 				}
 			}
-
 			let colorPosition = $(this).data('color-position');
-			if (colorPosition !== querybiz.lastModalProductItemStockColorPosition) {
+
+			if(colorImage = $(this).data('image') ?? false){
+				$('.products-large-image-main').css('background-image', 'url(' + colorImage + ')');
+			}
+			if (colorPosition !== querybiz.lastModalProductItemStockColorPosition){
 				$(this).css('background', '#eee');
 				$('.modal-product-item-stock-color[data-color-position="' + querybiz.lastModalProductItemStockColorPosition + '"]', win).css('background', 'transparent');
 				querybiz.lastModalProductItemStockColorPosition = colorPosition;
 			}
 		});
 
+
 		$('.modal-product-item-stock-size', win).on('click', function() {
-			let sizePosition = $(this).data('size-position');
+
 			let cursor = $(this).css('cursor');
+
+			if(cursor == 'not-allowed'){
+				return false;
+			}
+
+			querybiz.productShowAvailabilityAndPrices($(this));
+			let sizePosition = $(this).data('size-position');
+
 			if (sizePosition !== querybiz.lastModalProductItemStockSizePosition && cursor === 'pointer') {
 				$(this).css('background', '#eee');
 				$('.modal-product-item-stock-size[data-size-position="' + querybiz.lastModalProductItemStockSizePosition + '"]', win).css('background', 'transparent');
 				querybiz.lastModalProductItemStockSizePosition = sizePosition;
+
 			}
 		});
 	},
+
+	productShowAvailabilityAndPrices: function (obj){
+		let prices = $(obj).data('price');
+		let stock = $(obj).data('amount');
+	 	let vatValue = Number($('.price-with-vat').data('vat-value'));
+
+		let priceWithVat = parseFloat(prices[0]).toFixed(2);
+		let priceWithOutVat = parseFloat(prices[0] / (1+ (vatValue ?? 0))).toFixed(2);
+
+		$('.price-with-vat').text(isNaN(priceWithVat) ? '-/-' : priceWithVat.replace('.',','));
+		$('.price-no-vat').text(isNaN(priceWithOutVat) ? '-/-' : priceWithOutVat.replace('.',','));
+		$('.available').addClass('d-none');
+
+	  	if(stock[0] < 1){
+			$('.btn-add-product-cart').attr('disabled', 'disabled');
+			$('.available.text-danger').removeClass('d-none');
+	  	}
+	  	else{
+	  		$('.btn-add-product-cart').removeAttr('disabled');
+			$('.available.text-success').removeClass('d-none');
+	  	}
+
+		$('.products-desc-values').removeClass('d-none');
+	},
+
 
 	showSocialMediaIcons: function() {
 		$.getJSON(querybiz.CONST_APIUrl + '/api/getSocialMedia', function(data) {
