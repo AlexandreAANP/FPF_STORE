@@ -209,3 +209,7 @@ body{
 .background-color-blue{
 	background-color: var(--blue) !important;
 }
+
+.tns-ovh {
+	overflow: hidden;
+} 

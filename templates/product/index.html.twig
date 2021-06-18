@@ -37,7 +37,23 @@
                         </div>
                     {% endif %#}
 
-                    {% include '_render_block/simple-slider.html.twig' %}
+                    <!--pre>{{dump(colSlideContent)}}</pre-->
+                    {% if colSlideContent|length %}
+                    <div class="simple-slider">   
+                        {% for slideItem in colSlideContent %}
+                        <div>
+                            <div class="simple-slider-content" style="background-image: url('{{slideItem.filename}}');">
+                                <div class="simple-slider-content-info">
+                                    <p class="simple-slider-content-info-title">{{slideItem.title}}</p>
+                                    <p class="simple-slider-content-info-subtitle">{{slideItem.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                    {#% include '_render_block/simple-slider.html.twig' %#}
 
                     {% if colProducts is defined and colProducts|length > 0 %}
                         {% include '_render_block/products-header.html.twig' %}

@@ -78,7 +78,7 @@ class DefaultController extends SiteCacheController
         }
 
         $colRichmedia = [];
-        $url = $this->apiUrl . '/api/content?type=richmedia&area=content-area-page-header&fields=url&language=' . $defaultLanguage;
+        $url = $this->apiUrl . '/api/content?type=richmedia&area=content-area-page-header&area=content-area-store&category=richmedia-category-home&fields=url&language=' . $defaultLanguage;
         if ($data = $this->getAPIData($url)) {
             if ($objData = json_decode($data, JSON_UNESCAPED_UNICODE)) {
                 if (array_key_exists('colContent', $objData)) {

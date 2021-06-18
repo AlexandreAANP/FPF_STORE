@@ -59,6 +59,22 @@ class ProductController extends SiteCacheController
         $colProductType = $this->productType($request, '', $page);
         $colProductType['colProductType'] = $colProductTypeSigned;
 
+
+        //SLIDE CONTENT
+        $defaultLanguage = $request->getLocale();
+          $colSlideContent = [];
+        $url = $this->apiUrl . '/api/content?type=richmedia&category=richmedia-category-products&area=content-area-product-slide-content&area=content-area-store&fields=url&language=' . $defaultLanguage;
+        if ($data = $this->getAPIData($url)) {
+            if ($objData = json_decode($data, JSON_UNESCAPED_UNICODE)) {
+                if (array_key_exists('colContent', $objData)) {
+                    $colSlideContent = $objData['colContent'];
+                }
+            }
+        }
+        $colProductType['colSlideContent'] = $colSlideContent;
+
+
+        //dd($colProductType['colSlideContent']);
         return $this->renderSite('product/index.html.twig', $colProductType);
     }
 
